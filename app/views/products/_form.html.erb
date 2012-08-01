@@ -1,0 +1,43 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <label>Menu</label>
+    <%= f.select :menu_list_id, Product::MENU_LIST_TYPES, :prompt => "Select a Menu" %>
+    <%= link_to "Add Menu", menu_lists_path %>
+  </div>
+  <div class="field">
+    <%= f.label :description %> <br />
+    <%= f.kindeditor :description, :width => 670, :height => 300, :allowFileManager => false %>
+  </div>
+  <div class="field">
+    <%= f.label :dish_num %>
+    <%= f.number_field :dish_num %>
+  </div>
+  <div class="field">
+    <%= f.label :image_url %>
+    <%= f.file_field :image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

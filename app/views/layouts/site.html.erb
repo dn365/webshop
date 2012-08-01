@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title><%= @title || "hzdzcc" %></title>
+
+  <%= stylesheet_link_tag "site/base", "site/common", "site/cart", "site/periphery", :media => "all" %>
+  <%= javascript_include_tag "site/ga", "site/jquery-1", "site/function", "site/jquery", "site/shopcart", "site/jquery_002" %>
+  <script type="text/javascript">var contextPath="";</script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="site-nav">
+    <div class="headerMain">
+        <!--header_guid begin-->
+        <ul class="rFloat headerSubNav">
+            <li>
+                <div class="menu" style="width:126px;">
+                    <a class="menu-hd ie6 headerBuyCurrent" href="#"><em class="headerBuy png_bg"></em>&nbsp;购物车 <strong id="allCount">0</strong> 件<b></b></a>
+                    <div class="menu-bd" style="width: 290px; display: none; ">
+                        <div class="menu-bd-panel">
+                            <div class="menu-bd-panel" id="topCart">
+                                <ul class="minCart">
+                                    <input type="hidden" id="count" value="0">
+                                </ul>
+                                <p><a href="#" class="headerBuyButton rFloat">去我的购物车</a>
+                                    <span class="headerBlue">您的购物车里还没有东西</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="menu" style="width:70px;">
+                    <a class="menu-hd ie6" href="#">收藏夹<b></b></a>
+                    <div class="menu-bd sotw">
+                        <div class="menu-bd-panel">
+                            <a href="#">收藏的宝贝</a>
+                            <a href="#">收藏的店铺</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        欢迎您来到杭州电子菜场！&nbsp;&nbsp;请<a href="#"><span class="shallowBlue">登录</span></a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="reg" href="{url:/simple/reg/?callback=$callback}"><span class="orange">用户注册</span></a>
+        <!--header_guid end-->
+    </div>
+</div>
+
+
+<div class="header">
+
+    <!--header begin-->
+    <div class="headerMain headerPadding">
+        <ul class="rFloat headerSearch">
+            <li onclick="searchSelect(this, 2);if($(&#39;#keyWord&#39;).val()!=&#39;&#39;) searchKword();" class="current searchLine">商品</li>
+            <li onclick="searchSelect(this, 1);if($(&#39;#keyWord&#39;).val()!=&#39;&#39;) searchKword();">店铺</li>
+            <li class="searchBg">
+                <form name="topSearchForm" id="topSearchForm" action="http://www.0571dzcc.com/periphery/search.do" target="_blank">
+                    <input type="hidden" name="k" id="k">
+                    <input type="hidden" name="searchType" id="searchType" value="2">
+                    <input type="hidden" name="community.id" id="communityId" value="10000">
+                </form>
+                <input type="text" name="keyWord" id="keyWord" value="" class="headerInputText">
+                <input type="button" name="searchBtn" id="searchBtn" value="" class="headerInputSubmit" onclick="searchKword();"><br>
+                <p class="orange font14" style="text-align:right;">客服热线：<b class="font18">1586718xxxx</b></p>
+            </li>
+        </ul>
+
+        <%= link_to "", site_url, :class => "logo png_bg" %>
+        <script type="text/javascript">
+            function searchKword(){
+                var kword=$("#keyWord").val();
+                kword=encodeURI(kword.replace(/^\s+|\s+$/g,""));
+                $("#k").val(kword);
+                $("#topSearchForm").submit();
+            }
+        </script>
+    </div>
+
+    <div class="nav">
+        <ul class="subNav">
+            <li class="line"><%= link_to "首页", site_url %></li>
+            <% @menu_lists.each do |list| %>
+            <li><%= link_to list.title, :action => "list", :controller => "site", :id => list %></li>
+            <% end %>
+        </ul>
+    </div>
+    <!--header end-->
+</div>
+
+<div class="main">
+    <div class="mainContent">
+      <%= yield %>
+    </div>
+</div>
+<div class="fei">
+</div>
+
+<!--footer begin-->
+<div class="footer">
+	<div class="footerMain">
+    	<!--footer helps begin-->
+   	  <ul class="helps clearfix">
+        	<li>
+        	<dl>
+            	<dt><span class="newNovice png_bg"></span></dt>
+                <dt>
+                    <h1>新手入门</h1>
+                    <a href="http://www.dokdom.com/help/user.html" target="_blank">用户注册</a>
+	                <a href="http://www.dokdom.com/help/merchants.html" target="_blank">商户入驻</a>
+	                <a href="http://www.dokdom.com/help/level.html" target="_blank">会员等级</a>
+            	</dt>
+            </dl>
+            </li>
+            <li>
+            <dl>
+            	<dt><span class="guide png_bg"></span></dt>
+                <dt>
+                    <h1>购物指南</h1>
+                    <a href="http://www.dokdom.com/help/process.html" target="_blank">购物流程</a>
+                    <a href="http://www.dokdom.com/help/distribution.html" target="_blank">配送方式</a>
+                    <a href="http://www.dokdom.com/help/rules.html" target="_blank">米币规则</a>
+                    <a href="http://www.dokdom.com/help/after.html" target="_blank">售后服务</a>
+            	</dt>
+            </dl>
+            </li>
+            <li>
+            <dl>
+            	<dt><span class="pay png_bg"></span></dt>
+                <dt>
+                    <h1>支付方式</h1>
+                    <a href="http://www.dokdom.com/help/pay.html" target="_blank">网银支付</a>
+            	</dt>
+            </dl>
+            </li>
+            <li>
+            <dl>
+            	<dt><span class="channel png_bg"></span></dt>
+                <dt>
+                    <h1>特色频道</h1>
+                    <a href="./菜市 蔬菜、肉类、水产、豆制品、熟食、干货-多客多米_files/菜市 蔬菜、肉类、水产、豆制品、熟食、干货-多客多米.htm" target="_blank">逛菜市</a>
+                    <a href="http://www.dokdom.com/around" target="_blank">淘周边</a>
+                    <a href="http://www.dokdom.com/help/index.do" target="_blank">帮帮</a>
+            	</dt>
+            </dl>
+            </li>
+            <li class="noline">
+            <dl>
+            	<dt><span class="help png_bg"></span></dt>
+                <dt>
+                    <h1>帮助中心</h1>
+                    <a href="http://www.dokdom.com/help/faq.html" target="_blank">常见问题FAQ</a>
+                    <a href="http://www.dokdom.com/help/community_open.html" target="_blank">社区开放计划</a>
+                    <a href="http://www.dokdom.com/help/suggest.html" target="_blank">投诉建议</a>
+                    <a href="http://www.dokdom.com/help/service.html" target="_blank">联系客服</a>
+            	</dt>
+            </dl>
+            </li>
+        </ul>
+        <!--footer helps end-->
+
+        <!--copyright begin-->
+        <div class="copyRight clearfix">
+        	<ul class="guild">
+                <li><a href="http://www.dokdom.com/help/about.html" target="_blank">关于我们</a></li>
+                <li><a href="http://www.dokdom.com/help/links.html" target="_blank">合作伙伴</a></li>
+                <li><a href="http://www.dokdom.com/help/jobs.html" target="_blank">加入我们</a></li>
+                <li><a href="http://www.dokdom.com/help/contact.html" target="_blank">联系方式</a></li>
+          </ul>
+        	<p>Copyright © 2011-2012 DKDM Inc. All Rights Reserved. 浙ICP备12002621号-2</p>
+      </div>
+        <!--copyright end-->
+        <script type="text/javascript" src="./菜市 蔬菜、肉类、水产、豆制品、熟食、干货-多客多米_files/stat.js"></script>
+    </div>
+</div>
+<!--footer end-->
+
+</body>
+</html>

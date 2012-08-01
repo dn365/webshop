@@ -1,0 +1,64 @@
+<!--commonMenu end-->
+		<!--peripheryRight begin-->
+		<div class="peripheryRight rFloat">
+
+			<!--product begin-->
+			<div class="border" style="padding:4px;" id="sotwProduct">
+				<ul class="tabProductMenu">
+					<li class="current">收藏商品</li>
+					<li>收藏店铺</li>
+				</ul>
+				<div class="sotwProduct">
+					<div style="display: block;" id="wp_div0" class="contentTxt">
+						<ul class="sotwProductList">
+						</ul>
+						<div class="p10" style="text-align:right;"><a href="http://www.0571dzcc.com/periphery/product/listProductFav.do">查看全部</a></div>
+					</div>
+					<div id="wp_div1" class="contentTxt">
+						<ul class="sotwProductList">
+						</ul>
+						<div class="p10" style="text-align:right;"><a href="http://www.0571dzcc.com/periphery/product/listShopFav.do">查看全部</a></div>
+					</div>
+				</div>
+			</div>
+			<script>incTabStow('#sotwProduct');</script>
+			<!--product end-->
+		</div>
+		<!--peripheryRight end-->
+
+<!--peripheryleft begin-->
+		<div class="peripheryLeft border p10">
+
+          <div><span style="margin-left: 5px; font-size: 16px"><strong><%= @menu.title %></strong></span></div>
+		    <div class="search marTop10">
+		        <div class="searchHeader"></div>
+	            <!--searchMain begin-->
+	            <div class="searchMain">
+	                <ul class="dishList">
+                      <% @product.each do |product| %>
+                    	 <li class="noLine">
+                        	<div class="img"><%= link_to image_tag(product.image_url, :size => "80 x 80px"), :action => "product", :controller => "site", :id => product %></div>
+                            <div class="text">
+                                <%= link_to product.title, :action => "product", :controller => "site", :id => product %>
+
+                            </div>
+                            <div>￥<%= product.price %></div>
+                            <div>小(1500g/棵)</div>
+                            <div>销量10件</div>
+                            <div>评价2人</div>
+                            <div class="buy"><a href="#" class="buyButton">加入购物车</a></div>
+							<div class="sotw"><a href="#" class="sotwButton"><span>收藏</span></a></div>
+                            <input id="prodId" value="412" type="hidden">
+                        </li>
+                      <% end %>
+	                </ul>
+	            </div>
+	            <!--searchMain end-->
+	            <div class="searchFooter"></div>
+	<div class="marTop10 pageAlign">
+      <div class="pages">
+	    <%= will_paginate @product %>
+      </div>
+    </div>
+	        </div>
+		</div>

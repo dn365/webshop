@@ -1,0 +1,106 @@
+<% conut = 0 %>
+<% @menu_lists.each do |menu_list| %>
+    <% conut += 1 %>
+    <% arry_title, arry_price, arry_image, arry_id, i = [], [],[],[], 0 %>
+    <% product_id = menu_list.id %>
+      <% Product.find_all_by_menu_list_id(product_id, :order => "created_at DESC", :limit => 8).each do |product| %>
+      <% i += 1; arry_title[i] = product.title; arry_price[i] = product.price; arry_image[i] = product.image_url; arry_id[i] = product.id %>
+    <% end %>
+
+<!--1f begin-->
+<div class="commonBgColor floor" id="floor1f">
+  <div class="floorIcon f<%= conut %>">
+    <%= link_to menu_list.title, :action => "list", :id => menu_list %>
+  </div>
+
+  <ul class="floorSubMenu">
+            <% for x in 1..i do %>
+            <li><%= link_to arry_title[x], :action => "product", :controller => "site", :id => arry_id[x] %></li>
+            <% end %>
+            <li class="noline"><%= link_to "更多", :action => "list", :id => menu_list  %></li>
+        </ul>
+
+
+
+    <div class="maxImage" style="left:14px;">
+        <a href="./site/product?id=<%= arry_id[1] %>" target="_blank">
+            <div class="info" style="width:277px; height:277px;">
+                <dl>
+                    <dt><%= arry_title[1] %></dt>
+                    <dd>￥<%= arry_price[1] %>元/份
+                    </dd>
+                </dl>
+            </div>
+            <span class="pic"><%= image_tag arry_image[1], :alt => arry_title[1], :width => "277px", :height => "277px" %></span>
+        </a>
+    </div>
+
+    <div class="maxImage" style="left:848px;">
+        <a href="./site/product?id=<%= arry_id[2] %>" target="_blank">
+            <div class="info" style="width: 139px; height: 277px; display: none; ">
+                <dl>
+                    <dt><%= arry_title[2] %></dt>
+                    <dd>￥<%= arry_price[2] %>元/f</dd>
+                </dl>
+            </div>
+            <span class="pic"><%= image_tag arry_image[2], :alt => arry_title[2], :width => "138px" %></span>
+        </a>
+    </div>
+    <div class="floorList clearfix overflow">
+        <a href="./site/product?id=<%= arry_id[3] %>" target="_blank" class="wl276 Aw278">
+            <div class="info" style="display: none; ">
+                <dl>
+                    <dt><%= arry_title[3] %></dt>
+                    <dd>￥<%= arry_price[3] %>元/f
+                    </dd>
+                </dl>
+            </div>
+            <span class="pic"><%= image_tag arry_image[3], :width => "277px", :height => "138px" %></span>
+        </a><a href="./site/product?id=<%= arry_id[4] %>" target="_blank">
+        <div class="info" style="display: none; ">
+            <dl>
+                <dt><%= arry_title[4] %></dt>
+                <dd>￥<%= arry_price[4] %>元/f</dd>
+            </dl>
+        </div>
+        <span class="pic"><%= image_tag arry_image[4], :width => "138px", :height => "138px" %></span>
+    </a><a href="./site/product?id=<%= arry_id[5] %>" target="_blank" class="w138">
+        <div class="info" style="display: none; ">
+            <dl>
+                <dt><%= arry_title[5] %></dt>
+                <dd>￥<%= arry_price[5] %>元/f</dd>
+            </dl>
+        </div>
+        <span class="pic"><%= image_tag arry_image[5], :width => "138px", :height => "138px" %></span>
+    </a><a href="./site/product?id=<%= arry_id[6] %>" target="_blank" class="wl276">
+        <div class="info">
+            <dl>
+                <dt><%= arry_title[6] %></dt>
+                <dd>￥<%= arry_price[6] %>元/f</dd>
+            </dl>
+        </div>
+        <span class="pic"><%= image_tag arry_image[6], :width => "138px", :height => "138px" %></span>
+    </a><a href="./site/product?id=<%= arry_id[7] %>" target="_blank">
+        <div class="info">
+            <dl>
+                <dt><%= arry_title[7] %></dt>
+                <dd>￥<%= arry_price[7] %>元/f
+                </dd>
+            </dl>
+        </div>
+        <span class="pic"><%= image_tag arry_image[7], :width => "138px", :height => "138px" %></span>
+    </a><a href="./site/product?id=<%= arry_id[8] %>" target="_blank" class="Aw278">
+        <div class="info">
+            <dl>
+                <dt><%= arry_title[8] %></dt>
+                <dd>￥<%= arry_price[8] %>元/f
+                </dd>
+            </dl>
+        </div>
+        <span class="pic"><%= image_tag arry_image[8], :width => "277px", :height => "138px" %></span>
+    </a>
+    </div>
+</div>
+<!--1f end-->
+<!--brand end-->
+<% end %>

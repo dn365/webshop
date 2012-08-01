@@ -1,0 +1,27 @@
+<h1>Listing system_logins</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Hashed password</th>
+    <th>Salt</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @system_logins.each do |system_login| %>
+  <tr>
+    <td><%= system_login.name %></td>
+    <td><%= system_login.hashed_password %></td>
+    <td><%= system_login.salt %></td>
+    <td><%= link_to 'Show', system_login %></td>
+    <td><%= link_to 'Edit', edit_system_login_path(system_login) %></td>
+    <td><%= link_to 'Destroy', system_login, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Login', new_system_login_path %>

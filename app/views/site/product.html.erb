@@ -1,0 +1,100 @@
+<!--peripheryRight begin-->
+    	<div class="peripheryRight rFloat">
+            <!--product begin-->
+               <div class="border  marTop10 clearfix" style="padding:5px;">
+		            	<center><h1 class="orange font14">全新上架</h1></center>
+		                <ul class="sotwProductList border">
+		                    <li>
+		                        <div class="lFloat" style="padding-right:5px;"><a target="_blank" href="http://www.0571dzcc.com/product/449"><img src="upload/product_head_60_1337597571775.jpg" alt="荷兰豆"></a></div>
+		                        <div class="lFloat w">
+		                            <a target="_blank" class="rPLink" href="http://www.0571dzcc.com/product/449">荷兰豆</a><br>
+		                           半斤(250g)
+		                            <p class="orange marTop10">￥3.75</p>
+		                        </div>
+		                    </li>
+		                </ul>
+		            </div>
+            <!--product end-->
+        </div>
+        <!--peripheryRight end-->
+
+<div class="peripheryLeft border ie6OverFlow">
+            <!--detailImages begin-->
+            <div class="detailImages">
+                <div class="maxImages">
+                	<%= image_tag @product.image_url, :width => "271px", :height => "271px" %>
+                </div>
+                <center style="line-height:30px;"><font color="red">*</font>图片仅供参考，商品以实物为准</center>
+            </div>
+            <!--detailImages end-->
+
+            <!--detailInfo begin-->
+            <div class="detailInfoText">
+                <form action="" id="payForm" name="payForm" method="post">
+                <h1 class="font18"><%= @product.title %></h1>
+                <div class="marTop30 detailDList">
+                    <div class="praise">
+                        <ul class="noListStyle">
+                            <li style="line-height:30px; padding-right:5px;"><span class="orange font30">100%</span></li>
+                            <li>好评率<br>共1人参与</li>
+                        </ul>
+                        <div class="progressbgBar"><span class="progressbgBarColor" style="width:100%;"></span></div>
+                    </div>
+                    <div class="detailDListInfo">价格：￥ <span id="price" class="red font18"><%= @product.price %></span> /<span id="unit" class="font18">每份</span><br>
+                    库存：<span id="inveNum"><%= @product.dish_num %></span><br>
+                    规格：<ul class="specification" id="specification">
+                    		<li class="current"><span invenum="<%= @product.dish_num %>" price="<%= @product.price/2 %>" unit="半份" id="2392">半份(250g)</span></li>
+                    		<li><span invenum="<%= @product.dish_num %>" price="<%= @product.price %>" unit="一份" id="2393">一份(500g)</span></li>
+                    </ul><input name="specification" id="specificationVal" value="2392" type="hidden">
+                    <script>
+                    $("#specification>li").each(function(){
+                    	$(this).click(function(){
+                    		$(this).addClass("current").siblings().removeClass("current");
+                    		var specthis=$("span",this);
+                    		$("#specificationVal").val(specthis.attr("id"));
+                    		$("#price").text(specthis.attr("price"));
+                    		$("#unit").text(specthis.attr("unit"));
+                    		$("#inveNum").html(specthis.attr("inveNum"));
+                    	});
+                    });
+                    </script><br>
+                    我要买：
+                    <span style="position:relative;"><a href="javascript:minusprodNum()"><img src="images/inc/v1.gif" height="9" width="10"></a>
+                    <input name="quantity" id="quantity" size="4" class="inputText" value="1" onkeyup="numKeyUp()" onkeydown="getNowNum()" type="text">
+                    <a href="javascript:addProdNum()"><img src="images/inc/v2.gif" height="9" width="10"></a>
+                    <i class="iconb" style="display:none" id="quantityError">库存不够</i></span>
+                    </div>
+                </div>
+                <div class="formMsgError marTop10" id="errorDiv" style="width:190px; display:none"><span class="icon error png_bg"></span>&nbsp;&nbsp;<span id="errorText">库存不够或购买数目不正确！</span></div>
+                <input name="pid" id="pid" value="445" type="hidden">
+                <div class="marTop30" style="position:relative;">
+					<a href="javascript:prodButton();" class="commentAButton"><span>立即购买</span></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:cartCheckcookie();" class="commentBButton"><span>加入购物车</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            		<a href="javascript:void(0);" onclick="prodFav(445, this);" class="commentCButton"><span>收藏商品</span></a>
+            		<div class="floatCart contentTxt" id="floatCart">
+                    	<a class="rFloat floatCartClose" href="javascript:cartHidden();"><span>关闭</span></a>
+                    	<div class="floatCartTitle">宝贝已成功添加到购物车！</div>
+                        <p>购物车共有<span id="prodCount"></span>种商品，合计：<span id="allPrice"></span>元</p>
+                        <p><a href="http://www.0571dzcc.com/addcar/shopCart.do" class="cartBuyBtn"><span>去购物车结算</span></a>
+                        <a href="javascript:cartHidden();" class="cartBuyBtn"><span>继续选购</span></a></p>
+                    </div>
+                </div>
+               </form>
+            </div>
+            <!--detailInfo end-->
+            <h3 class="marTop10 font14">商品详情</h3>
+            <div class="detailbTitle"><%= @product.description.html_safe %></div>
+            <!--usersComment begin-->
+            <div class="marTop10 peripheryTips"><b></b><span class="usersCommentTitle"> 用户评价</span></div>
+            <div class="searchHeader" style="margin-top:12px; padding:4px 0 0;"></div>
+            <div class="searchMain">
+            	<ul class="usersCommentList clearfix ">
+                	<li><img src="images/inc/user_defualt_picute.png" alt="头像" height="40" width="40"><p class="shallowBlue">若雪8866</p></li>
+                    <li class="content">评价：很不错，蛮新鲜的菜
+                    </li><li class="last"><div class="face smile"></div><div class="red">
+                         好评
+                    </div></li>
+                </ul></div>
+
+
+            <!--usersComment end-->
+        </div>

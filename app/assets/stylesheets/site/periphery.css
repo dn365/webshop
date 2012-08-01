@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+.peripheryTips{background:url(../images/inc/bg.gif) no-repeat; position:relative; height:35px; padding:5px 4px;}
+.peripheryTips b{top:45px;}
+.shopMinIcon{background:url(../images/inc/icon_common.png) -217px -36px no-repeat; width:46px; height:35px; display:-moz-inline-stack; -moz-box-align:center; display:inline-block; +display:inline; zoom:1; vertical-align:middle;}
+.peripheryClass{list-style:none; display:-moz-inline-stack; -moz-box-align:center; display:inline-block; +display:inline; zoom:1; vertical-align:middle;}
+.peripheryClass li{float:left; padding:4px 5px 0; font:normal 12px "宋体";}
+.peripheryClass a,.peripheryClass a:visited{color:#4f4f4e;}
+.peripheryClass a:hover{color:#e16b23;}
+.detailbTitle{border-top:1px solid #dc8f4a; background:#f7f7f7; margin-top:8px; padding:10px;}
+
+/*推荐商品*/
+.recommendProduct{background:url(../images/inc/bg.gif) 0 -50px no-repeat; height:247px; padding-left:130px;}
+.dishBorder{position:relative; width:130px; height:130px;}
+.dishBorder img{width:130px; height:130px; border:0;}
+.xin{position:absolute; top:-10px; left:-20px;}
+.recommendProduct ul{list-style:none;}
+.recommendProduct ul li{padding:20px 13px; float:left;}
+.recommendProduct p{line-height:18px; width:130px; padding-top:6px;}
+
+/*店铺打烊*/
+.shopClose{position:absolute; top:-5px; left:0; border:1px solid #dcdbdb; background:#f5f5f5; text-align:center; height:38px; font-size:14px; width:180px; line-height:38px;}
+.rPLink{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:125px; display:-moz-inline-stack; -moz-box-align:center; display:inline-block; +display:inline; zoom:1; vertical-align:middle;}
+.specification{list-style:none; margin:5px 0; display:-moz-inline-stack; -moz-box-align:center; display:inline-block; +display:inline; zoom:1; vertical-align:middle;}
+.specification li{float:left; margin-right:10px; border:1px solid #dcdbdb; padding:0 5px; cursor:pointer;}
+.specification li.current{border:1px solid #ee5a00;}

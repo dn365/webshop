@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @system_login.name %>
+</p>
+
+<p>
+  <b>Hashed password:</b>
+  <%= @system_login.hashed_password %>
+</p>
+
+<p>
+  <b>Salt:</b>
+  <%= @system_login.salt %>
+</p>
+
+
+<%= link_to 'Edit', edit_system_login_path(@system_login) %> |
+<%= link_to 'Back', system_logins_path %>
