@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class System::LoginTest < ActiveSupport::TestCase
+class System::AdminLoginTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

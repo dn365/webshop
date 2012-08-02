@@ -17,6 +17,9 @@
 			<%= link_to "Home", :action => "index", :controller => "system/admin" %><br />
 			<%= link_to "porduct", products_path %><br />
 			<%= link_to "menu_list", menu_lists_path %><br />
+          <% if session[:admin_login_id] -%>
+              <%= link_to "退出管理", :action => "logout", :controller => "system/admin_logins" %>
+          <% end -%>
 		</div>
 		<div id="main">
 			<%= yield %>

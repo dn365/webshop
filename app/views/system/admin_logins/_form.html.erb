@@ -1,0 +1,29 @@
+<%= form_for(@system_admin_login) do |f| %>
+  <% if @system_admin_login.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@system_admin_login.errors.count, "error") %> prohibited this system_admin_login from being saved:</h2>
+
+      <ul>
+      <% @system_admin_login.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 35 %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, :size => 35 %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, 'Confirm' %>
+    <%= f.password_field :password_confirmation, :size => 35 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

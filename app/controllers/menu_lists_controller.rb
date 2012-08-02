@@ -1,5 +1,6 @@
 class MenuListsController < ApplicationController
   layout "admin"
+  before_filter :system_protect
   # GET /menu_lists
   # GET /menu_lists.json
   def index

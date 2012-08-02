@@ -1,0 +1,31 @@
+<div style="margin-left: 300px;margin-right: 300px;margin-top: 100px;">
+<h1>管理员登录</h1>
+
+<% if notice %>
+    <%= notice %>
+<% end %>
+<br/>
+
+<%= form_for :admin_login do |f| %>
+    <fieldset>
+      <legend>输入您的登录信息</legend>
+      <center>
+    <div class="field">
+    <label for="name">用户名:</label>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <label for="password">密码:</label>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.submit "登录", :disable_with => "正在登录 ..." %>
+  </div>
+
+        </center>
+    </fieldset>
+
+
+<% end %>
+ <span><%= link_to "back", site_url %></span>
+</div>

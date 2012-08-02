@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731151033) do
+ActiveRecord::Schema.define(:version => 20120801144753) do
 
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(:version => 20120731151033) do
     t.integer  "menu_list_id"
   end
 
-  create_table "system_logins", :force => true do |t|
+  create_table "system_admin_logins", :force => true do |t|
     t.string   "name"
-    t.string   "hashed_password"
+    t.string   "password"
     t.string   "salt"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

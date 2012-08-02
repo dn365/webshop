@@ -1,5 +1,4 @@
 Webshop::Application.routes.draw do
-  namespace :system do resources :logins end
 
   resources :line_items
 
@@ -11,7 +10,8 @@ Webshop::Application.routes.draw do
 
   get "site/product"
 
-
+  match 'admin_login' => "system/admin_logins#system_login", :via => [:get, :post], :as => :admin_login
+  match "admin_logout" => "system/admin_logins#logout", :via => :get
 
   resources :menu_lists
 
@@ -66,6 +66,7 @@ Webshop::Application.routes.draw do
 
   namespace :system do
     get "admin/index", :as => "admin_index"
+    resources :admin_logins
   end
 
 
