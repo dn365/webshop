@@ -13,6 +13,9 @@ Webshop::Application.routes.draw do
   match 'admin_login' => "system/admin_logins#system_login", :via => [:get, :post], :as => :admin_login
   match "admin_logout" => "system/admin_logins#logout", :via => :get
 
+
+
+
   resources :menu_lists
 
   resources :products

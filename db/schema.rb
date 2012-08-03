@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(:version => 20120801144753) do
 
   create_table "system_admin_logins", :force => true do |t|
     t.string   "name"
-    t.string   "password"
+    t.string   "hashed_password"
     t.string   "salt"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

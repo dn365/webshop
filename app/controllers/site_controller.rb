@@ -3,20 +3,30 @@ class SiteController < ApplicationController
   before_filter :load_menu_lists
 
   def index
+    #begin
 
   end
 
   def list
-    @menu = MenuList.find(params[:id])
-    @product = @menu.products.paginate :page => params[:page], :order => "created_at DESC", :per_page => 15
+    begin
+      @menu = MenuList.find(params[:id])
+      @product = @menu.products.paginate :page => params[:page], :order => "created_at DESC", :per_page => 15
+    rescue ActiveRecord::RecordNotFound
+      redirect_to site_url, :notice => "Not find this Page !"
+    end
+
   end
 
   def product
-    @product = Product.find(params[:id])
+    begin
+      @product = Product.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to site_url, :notice => "Not find this Page !"
+    end
   end
 
   def load_menu_lists
-    @menu_lists = MenuList.all(:order => "created_at", :limit => 8)
+      @menu_lists = MenuList.all(:order => "created_at", :limit => 8)
   end
 
 

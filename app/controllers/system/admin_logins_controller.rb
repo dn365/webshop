@@ -5,7 +5,7 @@ class System::AdminLoginsController < ApplicationController
   # GET /system/admin_logins
   # GET /system/admin_logins.json
   def index
-    @system_admin_logins = System::AdminLogin.all
+    @system_admin_logins = System::AdminLogin.order(:name)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,7 +48,7 @@ class System::AdminLoginsController < ApplicationController
     respond_to do |format|
       if @system_admin_login.save
         session[:admin_login_id] = @system_admin_login.id
-        format.html { redirect_to @system_admin_login, notice: 'Admin login was successfully created.' }
+        format.html { redirect_to system_admin_logins_path, notice: 'Admin login was successfully created.' }
         format.json { render json: @system_admin_login, status: :created, location: @system_admin_login }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class System::AdminLoginsController < ApplicationController
 
     respond_to do |format|
       if @system_admin_login.update_attributes(params[:system_admin_login])
-        format.html { redirect_to @system_admin_login, notice: 'Admin login was successfully updated.' }
+        format.html { redirect_to system_admin_logins_path, notice: 'Admin login was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,8 +88,8 @@ class System::AdminLoginsController < ApplicationController
   def system_login
     if request.post? and params[:admin_login]
       @admin_login = System::AdminLogin.new(params[:admin_login])
-      admin_login = System::AdminLogin.find_by_name_and_password(@admin_login.name,@admin_login.password)
-      if admin_login
+      #admin_login = System::AdminLogin.find_by_name_and_password(@admin_login.name,@admin_login.password)
+      if admin_login = System::AdminLogin.new.authenticate(@admin_login.name, @admin_login.password)
          session[:admin_login_id] = admin_login.id
          flash[:notice] = "管理员 #{admin_login.name} 登录成功 ! "
          redirect_to(:action => "index", :controller => "system/admin")
@@ -103,7 +103,7 @@ class System::AdminLoginsController < ApplicationController
   def logout
       session[:admin_login_id] = nil
       flash[:notice] = "已经退出登录 !"
-      redirect_to(:action => "index", :controller => "/site")
+      redirect_to site_url
   end
 
 
