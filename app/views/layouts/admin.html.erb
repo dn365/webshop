@@ -15,11 +15,11 @@
 	<div id="columns">
 		<div id="side">
           <% if session[:admin_login_id] -%>
-              <%= link_to "Home", :action => "index", :controller => "system/admin" %><br />
-              <%= link_to "porduct", products_path %><br />
-              <%= link_to "menu_list", menu_lists_path %><br />
+              <%= link_to_unless_current "Home", :action => "index", :controller => "system/admin" %><br />
+              <%= link_to_unless_current "porduct", products_path %><br />
+              <%= link_to_unless_current "menu_list", menu_lists_path %><br />
 
-              <%= link_to "退出管理", admin_logout_path, :method => :delete  %>
+              <%= link_to_unless_current "退出管理", admin_logout_path, :method => :delete  %>
           <% end -%>
 		</div>
 		<div id="main">

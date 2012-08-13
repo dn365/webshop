@@ -44,7 +44,14 @@
             </li>
         </ul>
 
-        欢迎您来到杭州电子菜场！&nbsp;&nbsp;请<a href="#"><span class="shallowBlue">登录</span></a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="reg" href="{url:/simple/reg/?callback=$callback}"><span class="orange">用户注册</span></a>
+        欢迎您来到杭州电子菜场！&nbsp;&nbsp;
+      <% if @user %>
+          <%= link_to @user.name, :action => "user_center", :controller => "users"  %>&nbsp;
+          <%= link_to "logout", :action => "logout", :controller => "users" %>
+      <% else %>
+      请<span class="shallowBlue"><%= link_to "login", login_url %></span>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="orange"><%= link_to "regist", new_user_path %></span>
+      <% end %>
         <!--header_guid end-->
     </div>
 </div>

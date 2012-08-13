@@ -3,6 +3,8 @@ class Product < ActiveRecord::Base
   has_many :line_items
   belongs_to :menu_list
 
+  before_destroy :ensure_not_referenced_by_any_line_item
+
   MENU_LIST_TYPES = MenuList.all.map {|v| [v.title, v.id]}
   
   has_attached_file :image_url, :styles => { :medium => "300x300>", :thumb => "150x150>" }
@@ -13,6 +15,17 @@ class Product < ActiveRecord::Base
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
   validates :dish_num, :numericality => true
   validates :title, :uniqueness => true
+
+  private
+
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
+    end
+  end
 
 
 

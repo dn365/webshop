@@ -1,0 +1,24 @@
+<div class="depot_form">
+  <% if flash[:alert] %>
+    <p id="notice"><%= flash[:alert] %></p>
+  <% end %>
+
+  <%= form_for :user_login do |f| %>
+  <fieldset>
+    <legend>Please Log In</legend>
+
+    <div>
+      <label for="name">Name:</label>
+      <%= f.text_field :name, :size => 40 %>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%= f.submit "Login" %>
+    </div>
+  </fieldset>
+  <% end %>
+   <%= link_to "regist", new_user_path %>
+</div>

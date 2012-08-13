@@ -1,7 +1,7 @@
  # encoding: utf-8
 class System::AdminLoginsController < ApplicationController
-  layout "admin", :except => "system_login"
-  before_filter :system_protect, :except => "system_login"
+  layout "admin"
+  before_filter :system_protect
   # GET /system/admin_logins
   # GET /system/admin_logins.json
   def index
@@ -83,27 +83,6 @@ class System::AdminLoginsController < ApplicationController
       format.html { redirect_to system_admin_logins_url }
       format.json { head :no_content }
     end
-  end
-
-  def system_login
-    if request.post? and params[:admin_login]
-      @admin_login = System::AdminLogin.new(params[:admin_login])
-      #admin_login = System::AdminLogin.find_by_name_and_password(@admin_login.name,@admin_login.password)
-      if admin_login = System::AdminLogin.new.authenticate(@admin_login.name, @admin_login.password)
-         session[:admin_login_id] = admin_login.id
-         flash[:notice] = "管理员 #{admin_login.name} 登录成功 ! "
-         redirect_to(:action => "index", :controller => "system/admin")
-      else
-         @admin_login.password = nil
-         flash[:notice] = "管理员帐户或密码错误，请重新输入 !"
-      end
-    end
-  end
-
-  def logout
-      session[:admin_login_id] = nil
-      flash[:notice] = "已经退出登录 !"
-      redirect_to site_url
   end
 
 

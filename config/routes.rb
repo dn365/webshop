@@ -1,8 +1,14 @@
 Webshop::Application.routes.draw do
 
-  resources :line_items
+  resources :carts
 
-  #get "system/admin/index"
+  resources :users do
+    collection do
+      get 'user_center'
+    end
+  end
+
+  resources :line_items
 
   get "site/index"
 
@@ -10,8 +16,12 @@ Webshop::Application.routes.draw do
 
   get "site/product"
 
-  match 'admin_login' => "system/admin_logins#system_login", :via => [:get, :post], :as => :admin_login
-  match "admin_logout" => "system/admin_logins#logout", :via => :get
+
+  match 'admin_login' => "system/admin#login", :via => [:get, :post], :as => :admin_login
+  match "admin_logout" => "system/admin#logout", :via => :get
+
+  match 'user_login' => "users#login", :via => [:get, :post], :as => :login
+  match 'user_logout' => "users#logout", :via => :get
 
 
 

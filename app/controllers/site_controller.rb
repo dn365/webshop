@@ -1,10 +1,8 @@
 class SiteController < ApplicationController
   layout "site"
-  before_filter :load_menu_lists
+  before_filter :load_menu_lists, :load_session_user
 
   def index
-    #begin
-
   end
 
   def list

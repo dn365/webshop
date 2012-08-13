@@ -46,7 +46,10 @@
                             <div>小(1500g/棵)</div>
                             <div>销量10件</div>
                             <div>评价2人</div>
-                            <div class="buy"><a href="#" class="buyButton">加入购物车</a></div>
+                            <div class="buy">
+
+                              <%= button_to "加入购物车", line_items_path(:product_id => product) %>
+                            </div>
 							<div class="sotw"><a href="#" class="sotwButton"><span>收藏</span></a></div>
                             <input id="prodId" value="412" type="hidden">
                         </li>

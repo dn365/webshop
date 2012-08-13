@@ -68,7 +68,7 @@
                 <div class="formMsgError marTop10" id="errorDiv" style="width:190px; display:none"><span class="icon error png_bg"></span>&nbsp;&nbsp;<span id="errorText">库存不够或购买数目不正确！</span></div>
                 <input name="pid" id="pid" value="445" type="hidden">
                 <div class="marTop30" style="position:relative;">
-					<a href="javascript:prodButton();" class="commentAButton"><span>立即购买</span></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:cartCheckcookie();" class="commentBButton"><span>加入购物车</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<%= button_to "加入购物车", line_items_path(:product_id => @product.id) %>
             		<a href="javascript:void(0);" onclick="prodFav(445, this);" class="commentCButton"><span>收藏商品</span></a>
             		<div class="floatCart contentTxt" id="floatCart">
                     	<a class="rFloat floatCartClose" href="javascript:cartHidden();"><span>关闭</span></a>
