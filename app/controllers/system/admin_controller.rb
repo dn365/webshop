@@ -1,7 +1,7 @@
  # encoding: utf-8
 class System::AdminController < ApplicationController
-  layout "admin", :except => "login"
-  before_filter :system_protect, :except => "login"
+  #layout "admin", :except => "login"
+  before_filter :admin_login
 
   def index
   end

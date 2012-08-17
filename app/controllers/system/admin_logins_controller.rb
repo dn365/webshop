@@ -1,7 +1,7 @@
  # encoding: utf-8
 class System::AdminLoginsController < ApplicationController
-  layout "admin"
-  before_filter :system_protect
+  #layout "admin"
+  before_filter :admin_login
   # GET /system/admin_logins
   # GET /system/admin_logins.json
   def index

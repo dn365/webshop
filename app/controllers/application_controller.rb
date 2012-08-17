@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = cart.id
     cart
   end
+  
+  def admin_login
+    unless session[:admin_user_id]
+      flash[:notice] = "Please login first"
+      redirect_to admin_dashboard_path
+      return false
+    end
+  end
 
 
   def system_protect

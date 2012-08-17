@@ -9,8 +9,9 @@ gem 'mysql2'
 
 gem "paperclip", "~> 3.0"
 gem 'rails_kindeditor', '~> 0.3.0'
-gem 'will_paginate', '>= 3.0.pre'
-
+gem "ckeditor", "3.7.1"
+gem "will_paginate", ">=3.0.pre2"
+gem 'activeadmin'
 
 # Gems used only for assets and not required
 # in production environments by default.

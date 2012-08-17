@@ -1,0 +1,9 @@
+<%= semantic_form_for [:admin, @product] do |f| %>
+	<%= request.referer %>
+    <%= f.inputs do %>
+        <%= f.input :title %>
+        <%= f.input :menu_list_id, :as => :select, :collection => MenuList.all.inject({}) {|v,option| v.merge({option.title => option.id})} %>
+        <%= f.input :description, :as => :ckeditor, :input_html => { :height => 300, :width => "80%"} %>
+    <% end %>
+    <%= f.buttons :commit %>
+  <% end %>
