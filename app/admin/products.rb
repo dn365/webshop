@@ -1,7 +1,7 @@
 # encoding: utf-8
 ActiveAdmin.register Product do
   config.per_page = 25
-  index do
+  index :title => 'Product List' do
     column :title
     column :price, :sortable => :price do |product|
       div :class => "price" do
@@ -14,11 +14,21 @@ ActiveAdmin.register Product do
     default_actions
   end
   
-  show do
-    h3 product.title
-    div do
-      simple_format product.description
+  show :title => proc{ product.title } do |product|
+    attributes_table do
+      row :title
+      row :price
+      row :dish_num
+      row :description do
+        div do
+          simple_format product.description
+        end
+      end
+      row :image_url do
+        image_tag(product.image_url(:thumb)) 
+      end
     end
+    span link_to("Back", admin_products_path)
   end
   
   form do |f|

@@ -1,5 +1,6 @@
 ActiveAdmin.register AdminUser do
   #filter :email
+  actions :all, :except => [:show]
   index do
     column :email
     column :current_sign_in_at
